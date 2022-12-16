@@ -1,40 +1,50 @@
-import React from "react";
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "./App.css";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination } from "swiper";
 import R1 from "../src/images/reward1.png";
 import R2 from "../src/images/reward2.png";
 
 const App = () => {
-  SwiperCore.use([EffectCoverflow, Pagination]);
-
   return (
     <div>
       <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
+        slidesPerView={1}
+        spaceBetween={10}
+        pagination={{
+          clickable: true,
         }}
-        pagination={true}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
+        modules={[Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
           <img src={R1} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={R1} alt="" />
+          <img src={R2} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={R1} alt="" />
+          <img src={R2} alt="" />
         </SwiperSlide>
         <SwiperSlide>
           <img src={R2} alt="" />
